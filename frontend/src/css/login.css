@@ -1,0 +1,68 @@
+#body-login {
+    margin: 0px;
+    padding: 0;
+    font-family: 'Inter';
+    border-radius: 10px;
+    background:
+        url('../assets/background.png') no-repeat center top fixed,
+        url('../assets/point1.png') no-repeat top fixed,
+        url('../assets/point2.png') no-repeat bottom fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  #header-login {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 10px;
+  }
+
+  .login-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 500px;
+    height: 400px;
+  }
+  .login-container h2 {
+    text-align: center;
+  }
+  label {
+    display: block;
+    margin-top: 30px;
+  }
+  input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+  .form-group button {
+    width: 200px; 
+    padding: 10px;
+    border: none;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 0 auto; 
+    display: block; 
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.form-group button:hover {
+    background-color: #c0392b;
+  }
+  .forgot-password {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+  }

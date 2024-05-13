@@ -1,0 +1,107 @@
+import React, { useState } from 'react';
+import NavMenu from './navMenuVolunteer';
+
+function UpdateAvailabilityForm() {
+  const [availabilityData, setAvailabilityData] = useState({
+    jour: '',
+    heure_debut: '',
+    heure_fin: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setAvailabilityData({
+      ...availabilityData,
+      [name]: value
+    });
+  };
+
+  const handleUpdateOrCreate = async (e) => {
+    e.preventDefault();
+    try {
+      // Attempt to update availability
+      const updateResponse = await fetch(`https://au-temps-donne-api.onrender.com/api/volunteer/availability`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(availabilityData)
+      });
+
+      if (updateResponse.ok) {
+        console.log('Availability updated successfully');
+        // Add code to handle successful update
+      } else {
+        console.error('Failed to update availability:', updateResponse.statusText);
+        // Attempt to create availability if update fails
+        const createResponse = await fetch('https://au-temps-donne-api.onrender.com/api/volunteer/add-to-availability', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include',
+          body: JSON.stringify(availabilityData)
+        });
+
+        if (createResponse.ok) {
+          console.log('Availability created successfully');
+          // Add code to handle successful creation
+        } else {
+          console.error('Failed to create availability:', createResponse.statusText);
+          // Add code to handle failed creation
+        }
+      }
+    } catch (error) {
+      console.error('Error updating/creating availability:', error);
+      // Add code to handle errors
+    }
+  };
+  return (
+    <>
+    <NavMenu />
+
+     <div className="availability-form">
+      <h2>Update Availability</h2>
+      <form onSubmit={handleUpdateOrCreate}>
+        <div className="form-group">
+          <label htmlFor="jour">Jour:</label>
+          <input
+            type="text"
+            id="jour"
+            name="jour"
+            value={availabilityData.jour}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="heure_debut">Heure de début:</label>
+          <input
+            type="time"
+            id="heure_debut"
+            name="heure_debut"
+            value={availabilityData.heure_debut}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="heure_fin">Heure de fin:</label>
+          <input
+            type="time"
+            id="heure_fin"
+            name="heure_fin"
+            value={availabilityData.heure_fin}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit">Update or Create</button>
+      </form>
+    </div></>
+   
+  );
+}
+
+export default UpdateAvailabilityForm;

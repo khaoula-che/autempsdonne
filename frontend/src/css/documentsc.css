@@ -1,0 +1,30 @@
+.bodydocumentc{
+    margin-left: 300px;
+    background-color: white;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    button {
+        background-color: #D23939;
+        color: white;
+        border-radius: 20px;
+        padding: 10px;
+        margin-left: 43%;
+        MARGIN-TOP: 20px;
+        margin-bottom: 20px;
+    }
+    input[type="number"] {
+        padding: 15px;
+        font-size: 19px;
+        WIDTH: 50%;
+        justify-content: center;
+        margin-left: 25%;
+    }
+    h2 {
+        /* MARGIN-TOP: 24px; */
+        padding: 20px;
+        margin-left: 34%;
+        COLOR: coral;
+        justify-content: center;
+    }
+}
